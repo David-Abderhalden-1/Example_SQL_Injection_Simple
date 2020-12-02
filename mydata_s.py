@@ -10,7 +10,7 @@ mydatabase = mysql.connector.connect(
 
 # Login not injectable
 def login_checker_safe(username, password):
-    my_cursor_prepared = mydatabase.cursor()
+    my_cursor_prepared = mydatabase.cursor(prepared=True)
     checker_query = "SELECT * FROM user_authentication_2 WHERE username = %s AND password = %s;"
     credentials = (username, password)
     my_cursor_prepared.execute(checker_query, credentials)
